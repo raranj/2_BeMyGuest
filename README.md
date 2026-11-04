@@ -1,0 +1,1 @@
+python manage.py runserver --settings=bemyguest.settings.development
