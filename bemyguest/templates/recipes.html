@@ -3,22 +3,27 @@
 {% block title %}Recipes - Be My Guest{% endblock %}
 
 {% block content %}
-<div class="row" style="justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-  <h2>Recipe Collection</h2>
-  <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <label for="sort-by" style="font-weight: 600; font-size: 0.9rem;">Sort by:</label>
-    <select id="sort-by" style="width: auto;">
-      <option value="newest">Newest</option>
-      <option value="oldest">Oldest</option>
-      <option value="popular">Most Popular</option>
-    </select>
+<div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+  <h2 style="margin: 0; font-weight: 700;">Recipe Collection</h2>
+
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <label for="sort-by" style="font-weight: 600; font-size: 0.9rem; margin: 0;">Sort by:</label>
+      <select id="sort-by" style="width: auto; margin: 0;">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+    <a href="{% url 'recipe_create' %}" class="button" style="background-color: var(--stormy-teal, #1b535d); color: white; border-radius: 9999px; padding: 0.5rem 1.5rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center;">
+      Create New Recipe
+    </a>
   </div>
 </div>
 
 <div class="card-grid">
   {% for recipe in recipes %}
   <div class="recipe-card">
-    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--stormy-teal); font-weight: bold; overflow: hidden;">
+    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--stormy-teal); font-weight: bold; overflow: hidden; height: 180px;">
       {% if recipe.image %}
         <img src="{{ recipe.image.url }}" alt="{{ recipe.recipe_name }}" style="width: 100%; height: 100%; object-fit: cover;">
       {% else %}
