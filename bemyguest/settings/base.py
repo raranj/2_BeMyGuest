@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "features.recipes",
     "features.posts",
     "features.invitations",
+    "features.users",
 ]
 
 MIDDLEWARE = [
@@ -49,7 +50,7 @@ ROOT_URLCONF = "bemyguest.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],  # <-- Add this so Django finds root /templates/base.html
+        "DIRS": [BASE_DIR / "bemyguest" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -107,3 +108,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "users:user"
+LOGOUT_REDIRECT_URL = "login"
