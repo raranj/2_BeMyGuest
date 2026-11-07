@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Invitations - Be My Guest{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 1.5rem;">Invitations Dashboard</h2>
+
+<div class="row">
+  <!-- Left Column: Sent Invites -->
+  <div style="flex: 1; min-width: 300px;">
+    <div class="card">
+      <div class="card__header">
+        <h3>Sent Invites</h3>
+      </div>
+      <div class="card__body" style="padding: 0;">
+        <ul class="list">
+          <li style="padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong>Dinner Party #1</strong>
+              <span class="badge primary">8 / 10 Accepted</span>
+            </div>
+            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Lasagna Bolognese</p>
+          </li>
+          <li style="padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong>Weekend Backyard BBQ</strong>
+              <span class="badge primary">4 / 6 Accepted</span>
+            </div>
+            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Honey Glazed Chicken</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Received Requests -->
+  <div style="flex: 1; min-width: 300px;">
+    <div class="card">
+      <div class="card__header">
+        <h3>Requests & Received</h3>
+      </div>
+      <div class="card__body" style="padding: 0;">
+        <ul class="list">
+          <li style="padding: 1rem;">
+            <p style="margin: 0 0 0.5rem 0;"><strong>Sarah invited you:</strong> "Come try my special pumpkin soup recipe!"</p>
+            <p class="muted" style="font-size: 0.85rem; margin-bottom: 0.75rem;">Date: Nov 14, 2026</p>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="button" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Accept</button>
+              <button class="button button-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Deny</button>
+            </div>
+          </li>
+          <li style="padding: 1rem;">
+            <p style="margin: 0 0 0.5rem 0;"><strong>Alex invited you:</strong> "Hosting a small pasta night get-together."</p>
+            <p class="muted" style="font-size: 0.85rem; margin-bottom: 0.75rem;">Date: Nov 18, 2026</p>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="button" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Accept</button>
+              <button class="button button-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Deny</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

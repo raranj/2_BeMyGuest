@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Community Posts - Be My Guest{% endblock %}
+
+{% block content %}
+<div class="row" style="justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+  <h2>Event Posts</h2>
+  <a href="#" class="button">Create New Post</a>
+</div>
+
+<div class="card-grid">
+  <!-- Post Card 1 -->
+  <div class="card">
+    <div class="card__header" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>Taco Tuesday Night</span>
+      <span class="badge secondary">Alone w/ Friends</span>
+    </div>
+    <div class="card__body">
+      <p style="margin-bottom: 0.75rem;"><strong>Recipe:</strong> Homemade Guacamole & Tacos</p>
+      <p class="muted" style="font-size: 0.95rem; margin-bottom: 1rem;">We got together to try out a brand new spicy salsa recipe. Everyone loved it!</p>
+      <div style="background: var(--papaya-whip); height: 140px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--brandy); font-weight: 600;">
+        [ Event Photo ]
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Card 2 -->
+  <div class="card">
+    <div class="card__header" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>Sunday Brunch</span>
+      <span class="badge secondary">Hosted</span>
+    </div>
+    <div class="card__body">
+      <p style="margin-bottom: 0.75rem;"><strong>Recipe:</strong> Fluffy Buttermilk Waffles</p>
+      <p class="muted" style="font-size: 0.95rem; margin-bottom: 1rem;">Sunny morning gathering with great coffee and fresh berries.</p>
+      <div style="background: var(--papaya-whip); height: 140px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--brandy); font-weight: 600;">
+        [ Event Photo ]
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
