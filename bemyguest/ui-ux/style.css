@@ -168,11 +168,19 @@ h1, h2, h3, h4, h5 {
 }
 
 .recipe-card__image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  background-color: var(--stormy-teal-dark); /* Darker blue image placeholder */
-  color: var(--white);                        /* White text over dark background */
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  background-color: var(--stormy-teal-dark, #0F434B);
+  position: relative;
+  overflow: hidden;
+}
+
+.recipe-card__image img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
 .recipe-card__content {

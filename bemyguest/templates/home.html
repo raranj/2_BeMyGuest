@@ -6,28 +6,34 @@
 
 {% block content %}
 <div class="card" style="padding: 2.5rem 2rem;">
-  <div class="row" style="align-items: center;">
-    <div style="flex: 1; min-width: 280px;">
+  <!-- Flex container forced with !important to prevent Skeleton/CSS framework column stacking -->
+  <div class="row" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 2rem !important;">
+
+    <!-- Left Side: Welcome Text & Action Buttons -->
+    <div style="flex: 1 1 50% !important; min-width: 0 !important; margin-left: 0 !important;">
       <h1 style="color: var(--ink-black); font-size: 2.2rem; margin-bottom: 1rem;">Welcome to Be My Guest</h1>
       <p style="font-size: 1.15rem; color: var(--ink-black); margin-bottom: 1.75rem;">
         A cozy, fun way to post events and meet up with people over food. Discover community recipes, share your gatherings, and connect with friends.
       </p>
       {% if not current_user.is_authenticated %}
-  <div style="display: flex; gap: 1rem;">
-    <!-- Solid dark teal for high contrast -->
-    <a href="#" class="button">Log In</a>
+      <div style="display: flex; gap: 1rem;">
+        <!-- Solid dark teal for high contrast -->
+        <a href="#" class="button">Log In</a>
 
-    <!-- Warm accent button for Sign Up -->
-    <a href="#" class="button button-secondary">Sign Up</a>
-  </div>
-{% endif %}
+        <!-- Warm accent button for Sign Up -->
+        <a href="#" class="button button-secondary">Sign Up</a>
+      </div>
+      {% endif %}
     </div>
-    <div style="flex: 1; min-width: 280px; text-align: center;">
+
+    <!-- Right Side: Branding / Logo Box -->
+    <div style="flex: 1 1 45% !important; min-width: 0 !important; margin-left: 0 !important; text-align: center;">
       <div style="background: var(--papaya-whip); border: 2px dashed var(--border-light); border-radius: var(--radius); padding: 3rem 2rem;">
         <h3 style="color: var(--stormy-teal); margin-bottom: 0.5rem;">~ Be My Guest ~</h3>
         <p class="muted" style="margin: 0; color: var(--brandy); font-weight: 500;">Logo & Brand Identity Area</p>
       </div>
     </div>
+
   </div>
 </div>
 {% endblock %}
