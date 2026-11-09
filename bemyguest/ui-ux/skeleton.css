@@ -6,11 +6,12 @@ a {
 }
 a:hover, a:focus {
   text-decoration: underline;
-  color: var(--brandy);
+  color: var(--white);
 }
 
 /* Buttons */
 .button,
+a.button,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -20,49 +21,73 @@ input[type="button"] {
   justify-content: center;
   background-color: var(--stormy-teal);
   border: 2px solid var(--stormy-teal);
-  color: var(--white);
+  color: var(--white) !important; /* Overrides default link text colors */
   border-radius: 999px;
   padding: 0.6rem 1.4rem;
   font-weight: 600;
   line-height: 1.2;
   transition: background-color 0.2s ease, transform 0.1s ease;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .button:focus, .button:hover,
+a.button:focus, a.button:hover,
 button:focus, button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  background-color: var(--brandy);
-  border-color: var(--brandy);
-  color: var(--white);
-  text-decoration: none;
+  background-color: var(--white) !important;
+  border-color: var(--white) !important;
+  color: var(--ink-black) !important;
+  text-decoration: none !important;
 }
 
-.button:active, button:active {
+.button:active, a.button:active, button:active {
   transform: translateY(1px);
 }
 
-.button.button-outline {
-  background: transparent;
-  color: var(--stormy-teal);
-  border-color: var(--stormy-teal);
+/* Secondary Button (Harvest Orange Accent) */
+.button.button-secondary,
+a.button.button-secondary {
+  background-color: var(--harvest-orange) !important;
+  border-color: var(--harvest-orange) !important;
+  color: var(--white) !important;
 }
 
-.button.button-outline:hover {
-  background: var(--stormy-teal);
-  color: var(--white);
+.button.button-secondary:hover,
+a.button.button-secondary:hover {
+  background-color: var(--white) !important;
+  border-color: var(--white) !important;
+  color: var(--harvest-orange) !important;
 }
 
-.button.button-secondary {
-  background-color: var(--harvest-orange);
-  border-color: var(--harvest-orange);
-  color: var(--white);
+/* Outline Button (Dark Text on Light Background) */
+.button.button-outline,
+a.button.button-outline {
+  background: transparent !important;
+  color: var(--ink-black) !important;
+  border: 2px solid var(--ink-black) !important;
 }
 
-.button.button-secondary:hover {
-  background-color: var(--brandy);
-  border-color: var(--brandy);
+.button.button-outline:hover,
+a.button.button-outline:hover {
+  background: var(--white) !important;
+  color: var(--ink-black) !important;
+  border-color: var(--white) !important;
+}
+
+/* Nav Bar / Header Specific Button */
+a.button.button-nav,
+.button.button-nav {
+  background-color: var(--white) !important;
+  color: var(--stormy-teal) !important;            /* Standard stormy teal text */
+  border: 2px solid var(--white) !important;
+}
+
+a.button.button-nav:hover,
+.button.button-nav:hover {
+  background-color: var(--stormy-teal-dark, #0F434B) !important; /* Darker blue background on hover */
+  color: var(--white) !important;                   /* Crisp white text */
+  border-color: var(--stormy-teal-dark, #0F434B) !important;
 }
 
 /* Forms */

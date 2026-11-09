@@ -7,9 +7,9 @@
     <title>{% block title %}Be My Guest{% endblock %}</title>
 
     <!-- Static CSS files from ui-ux folder -->
-    <link rel="stylesheet" href="{% static 'normalize.css' %}">
-    <link rel="stylesheet" href="{% static 'skeleton.css' %}">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'normalize.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'skeleton.css' %}?v=3">
+    <link rel="stylesheet" href="{% static 'style.css' %}?v=100">
 </head>
 <body>
   <!-- App Header & Navigation Bar -->
@@ -27,7 +27,7 @@
         <a href="{% url 'users:user' %}" class="{% if request.resolver_match.namespace == 'users' %}active{% endif %}">My Profile</a>
       </nav>
 
-      <!-- User Auth State Switcher -->
+      <!-- User Auth State Switcher --><!-- User Auth State Switcher -->
       <div class="auth-nav">
         {% if user.is_authenticated %}
           <form method="post" action="{% url 'logout' %}">
@@ -35,8 +35,9 @@
             <button type="submit" class="button button-outline">Log Out</button>
           </form>
         {% else %}
-          <a href="{% url 'login' %}" class="button button-outline">Log In</a>
+          <a href="{% url 'login' %}" class="button button-nav">Log In</a>
         {% endif %}
+      </div>
       </div>
     </div>
   </header>

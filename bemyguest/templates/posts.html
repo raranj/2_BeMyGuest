@@ -3,14 +3,15 @@
 {% block title %}Community Posts - Be My Guest{% endblock %}
 
 {% block content %}
-<div class="row" style="justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+<div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
   <h2>Event Posts</h2>
   <a href="#" class="button">Create New Post</a>
 </div>
 
-<div class="card-grid">
+<!-- Grid explicitly forced to top alignment -->
+<div class="card-grid" style="display: grid; align-items: start; align-content: start;">
   <!-- Post Card 1 -->
-  <div class="card">
+  <div class="card" style="align-self: start;">
     <div class="card__header" style="display: flex; justify-content: space-between; align-items: center;">
       <span>Taco Tuesday Night</span>
       <span class="badge secondary">Alone w/ Friends</span>
@@ -25,7 +26,7 @@
   </div>
 
   <!-- Post Card 2 -->
-  <div class="card">
+  <div class="card" style="align-self: start;">
     <div class="card__header" style="display: flex; justify-content: space-between; align-items: center;">
       <span>Sunday Brunch</span>
       <span class="badge secondary">Hosted</span>

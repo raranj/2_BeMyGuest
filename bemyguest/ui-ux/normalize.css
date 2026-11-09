@@ -130,11 +130,12 @@ td, th { padding: 0; }
 :root {
   --ink-black: #001524;
   --stormy-teal: #15616D;
-  --papaya-whip: #FFECD1;
-  --harvest-orange: #D95D00; /* Accessible warm orange */
+  --papaya-whip: #FFECD1;        /* Light yellow for cards */
+  --papaya-whip-light: #FFF6E8;  /* Subtle lighter yellow tint */
+  --off-white: #FDFBF7;           /* Off-white page background */
+  --harvest-orange: #D95D00;
   --brandy: #78290F;
   --white: #ffffff;
-  --surface-tint: #FFFBF5;
-  --border-light: #EAD0B3;
+  --border-light: #EAD0B3;       /* Warm border contrast */
   --radius: 12px;
 }
