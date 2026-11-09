@@ -1,43 +1,69 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Community Posts - Be My Guest{% endblock %}
+{% block title %}Posts - Be My Guest{% endblock %}
 
 {% block content %}
-<div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-  <h2>Event Posts</h2>
+<!-- Top Header Row: Title & Action Button aligned together -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+  <h2 style="margin: 0;">Community Posts</h2>
   <a href="#" class="button">Create New Post</a>
 </div>
 
-<!-- Grid explicitly forced to top alignment -->
-<div class="card-grid" style="display: grid; align-items: start; align-content: start;">
+<!-- Two-Column Grid Top-Aligned -->
+<div class="card-grid" style="display: flex !important; align-items: flex-start !important; gap: 1.5rem !important;">
+
   <!-- Post Card 1 -->
-  <div class="card" style="align-self: start;">
-    <div class="card__header" style="display: flex; justify-content: space-between; align-items: center;">
-      <span>Taco Tuesday Night</span>
-      <span class="badge secondary">Alone w/ Friends</span>
+  <div class="card" style="flex: 1; min-width: 0; align-self: flex-start !important; margin-top: 0 !important; background-color: var(--card-bg, #FFF6E8); border: 2px solid var(--stormy-teal); border-radius: 12px; padding: 1.25rem;">
+
+    <!-- Top Row Header -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; min-height: 52px;">
+      <div>
+        <h4 style="margin: 0 0 0.4rem 0; color: var(--ink-black); font-size: 1.2rem; font-weight: 700; line-height: 1.2;">Taco Tuesday Night</h4>
+        <span class="badge secondary">Alone w/ Friends</span>
+      </div>
+      <a href="{% url 'recipes' %}" class="button button-outline" style="font-size: 0.85rem; padding: 0.4rem 0.8rem; white-space: nowrap;">
+        Recipe ↗
+      </a>
     </div>
-    <div class="card__body">
-      <p style="margin-bottom: 0.75rem;"><strong>Recipe:</strong> Homemade Guacamole & Tacos</p>
-      <p class="muted" style="font-size: 0.95rem; margin-bottom: 1rem;">We got together to try out a brand new spicy salsa recipe. Everyone loved it!</p>
-      <div style="background: var(--papaya-whip); height: 140px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--brandy); font-weight: 600;">
-        [ Event Photo ]
+
+    <!-- Body Content Row -->
+    <div style="display: grid; grid-template-columns: 1fr 110px; gap: 1rem; align-items: center; margin-top: 1.25rem;">
+      <div style="font-size: 0.95rem; color: var(--ink-black); line-height: 1.4;">
+        We got together to try out a brand new spicy salsa recipe. Everyone loved the homemade guacamole!
+      </div>
+      <div style="background: var(--papaya-whip, #FFECD1); height: 95px; border: 1.5px dashed var(--stormy-teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--brandy, #8B3A2B); font-size: 0.85rem; font-weight: 600; text-align: center; padding: 0.25rem;">
+        Event Photo
       </div>
     </div>
+
   </div>
 
   <!-- Post Card 2 -->
-  <div class="card" style="align-self: start;">
-    <div class="card__header" style="display: flex; justify-content: space-between; align-items: center;">
-      <span>Sunday Brunch</span>
-      <span class="badge secondary">Hosted</span>
+  <div class="card" style="flex: 1; min-width: 0; align-self: flex-start !important; margin-top: 0 !important; background-color: var(--card-bg, #FFF6E8); border: 2px solid var(--stormy-teal); border-radius: 12px; padding: 1.25rem;">
+
+    <!-- Top Row Header -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; min-height: 52px;">
+      <div>
+        <h4 style="margin: 0 0 0.4rem 0; color: var(--ink-black); font-size: 1.2rem; font-weight: 700; line-height: 1.2;">Sunday Morning Brunch</h4>
+        <span class="badge primary">Hosted</span>
+      </div>
+      <a href="{% url 'recipes' %}" class="button button-outline" style="font-size: 0.85rem; padding: 0.4rem 0.8rem; white-space: nowrap;">
+        Recipe ↗
+      </a>
     </div>
-    <div class="card__body">
-      <p style="margin-bottom: 0.75rem;"><strong>Recipe:</strong> Fluffy Buttermilk Waffles</p>
-      <p class="muted" style="font-size: 0.95rem; margin-bottom: 1rem;">Sunny morning gathering with great coffee and fresh berries.</p>
-      <div style="background: var(--papaya-whip); height: 140px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--brandy); font-weight: 600;">
-        [ Event Photo ]
+
+    <!-- Body Content Row -->
+    <div style="display: grid; grid-template-columns: 1fr 110px; gap: 1rem; align-items: center; margin-top: 1.25rem;">
+      <div style="font-size: 0.95rem; color: var(--ink-black); line-height: 1.4;">
+        Fluffy buttermilk waffles, fresh berries, and dark roast coffee with neighbors.
+      </div>
+      <div style="background: var(--papaya-whip, #FFECD1); height: 95px; border: 1.5px dashed var(--stormy-teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--brandy, #8B3A2B); font-size: 0.85rem; font-weight: 600; text-align: center; padding: 0.25rem;">
+        Event Photo
       </div>
     </div>
+
   </div>
+
 </div>
 {% endblock %}

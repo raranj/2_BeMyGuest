@@ -3,13 +3,13 @@
 {% block title %}Recipes - Be My Guest{% endblock %}
 
 {% block content %}
-<div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+<div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
   <h2 style="margin: 0; font-weight: 700;">Recipe Collection</h2>
 
-  <div style="display: flex; align-items: center; gap: 1rem;">
+  <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
     <div style="display: flex; align-items: center; gap: 0.5rem;">
       <label for="sort-by" style="font-weight: 600; font-size: 0.9rem; margin: 0;">Sort by:</label>
-      <select id="sort-by" style="width: auto; margin: 0;">
+      <select id="sort-by" style="width: auto; margin: 0; height: auto; padding: 0.4rem 1rem; border-radius: 999px;">
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
       </select>
@@ -20,20 +20,21 @@
   </div>
 </div>
 
-<div class="card-grid">
+<!-- Fixed Grid Container to prevent 100% width stretching -->
+<div class="card-grid" style="display: grid !important; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; gap: 1.5rem !important; align-items: start !important;">
   {% for recipe in recipes %}
-  <div class="recipe-card">
-    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--stormy-teal); font-weight: bold; overflow: hidden; height: 180px;">
+  <div class="recipe-card" style="margin-top: 0 !important; border: 1.5px solid var(--stormy-teal-dark, #0F434B); border-radius: var(--radius, 12px); overflow: hidden; background: var(--papaya-whip-light, #FFF6E8);">
+    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--white); background-color: var(--stormy-teal-dark, #0F434B); font-weight: bold; overflow: hidden; height: 180px;">
       {% if recipe.image %}
         <img src="{{ recipe.image.url }}" alt="{{ recipe.recipe_name }}" style="width: 100%; height: 100%; object-fit: cover;">
       {% else %}
         [ Food Image ]
       {% endif %}
     </div>
-    <div class="recipe-card__content">
-      <span class="badge primary">{{ recipe.difficulty }}</span>
-      <h3 style="margin-top: 0.5rem; font-size: 1.1rem;"><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.recipe_name }}</a></h3>
-      <p class="muted" style="font-size: 0.9rem; margin-bottom: 0;">{{ recipe.description }}</p>
+    <div class="recipe-card__content" style="padding: 1.25rem;">
+      <span class="badge primary" style="margin-bottom: 0.5rem;">{{ recipe.difficulty }}</span>
+      <h3 style="margin-top: 0.25rem; margin-bottom: 0.5rem; font-size: 1.2rem;"><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.recipe_name }}</a></h3>
+      <p class="muted" style="font-size: 0.9rem; margin-bottom: 0; color: var(--ink-black); line-height: 1.4;">{{ recipe.description }}</p>
     </div>
   </div>
   {% empty %}

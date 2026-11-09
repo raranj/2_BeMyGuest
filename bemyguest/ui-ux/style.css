@@ -125,8 +125,12 @@ h1, h2, h3, h4, h5 {
   overflow: hidden;
 }
 
+.card-grid .card {
+  margin-top: 0 !important;
+}
+
 .card + .card {
-  margin-top: 1.25rem;
+  margin-top: 0;
 }
 
 .card__header {
@@ -151,12 +155,16 @@ h1, h2, h3, h4, h5 {
 }
 
 .recipe-card {
-  background: var(--papaya-whip-light);
-  border-radius: var(--radius);
-  border: 1.5px solid var(--stormy-teal-dark); /* Dark blue border */
+  background: var(--papaya-whip-light, #FFF6E8);
+  border-radius: var(--radius, 12px);
+  border: 1.5px solid var(--stormy-teal-dark, #0F434B);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.recipe-card + .recipe-card {
+  margin-top: 0 !important;
 }
 
 .recipe-card__image {
@@ -194,6 +202,23 @@ h1, h2, h3, h4, h5 {
 .card {
   align-self: start !important;        /* Prevents individual cards from stretching/centering */
   margin-bottom: 0;
+}
+
+/* Posts Page Grid & Recipe Card Layout Alignment */
+.card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  gap: 1.5rem;
+  align-items: start !important;
+  align-content: start !important;
+}
+
+.card {
+  align-self: start !important;
+  background-color: var(--card-bg, #FFF6E8);
+  border: 2px solid var(--stormy-teal);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 21, 36, 0.05);
 }
 
 /* Footer Styling */

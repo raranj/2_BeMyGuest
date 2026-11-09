@@ -5,43 +5,18 @@
 {% block content %}
 <h2 style="margin-bottom: 1.5rem;">Invitations Dashboard</h2>
 
-<div class="row">
-  <!-- Left Column: Sent Invites -->
-  <div style="flex: 1; min-width: 300px;">
-    <div class="card">
-      <div class="card__header">
-        <h3>Sent Invites</h3>
-      </div>
-      <div class="card__body" style="padding: 0;">
-        <ul class="list">
-          <li style="padding: 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <strong>Dinner Party #1</strong>
-              <span class="badge primary">8 / 10 Accepted</span>
-            </div>
-            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Lasagna Bolognese</p>
-          </li>
-          <li style="padding: 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <strong>Weekend Backyard BBQ</strong>
-              <span class="badge primary">4 / 6 Accepted</span>
-            </div>
-            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Honey Glazed Chicken</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<!-- Explicit 2-Column Grid Wrapper -->
+<div style="display: flex !important; flex-direction: row !important; gap: 1.5rem !important; align-items: flex-start !important; width: 100% !important;">
 
-  <!-- Right Column: Received Requests -->
-  <div style="flex: 1; min-width: 300px;">
-    <div class="card">
+  <!-- Left Column: Requests & Received -->
+  <div style="flex: 1 1 50% !important; min-width: 0 !important;">
+    <div class="card" style="margin-top: 0 !important; width: 100% !important;">
       <div class="card__header">
-        <h3>Requests & Received</h3>
+        <h3 style="margin: 0;">Requests & Received</h3>
       </div>
       <div class="card__body" style="padding: 0;">
-        <ul class="list">
-          <li style="padding: 1rem;">
+        <ul class="list" style="list-style: none; margin: 0; padding: 0;">
+          <li style="padding: 1rem; border-bottom: 1px solid var(--border-light);">
             <p style="margin: 0 0 0.5rem 0;"><strong>Sarah invited you:</strong> "Come try my special pumpkin soup recipe!"</p>
             <p class="muted" style="font-size: 0.85rem; margin-bottom: 0.75rem;">Date: Nov 14, 2026</p>
             <div style="display: flex; gap: 0.5rem;">
@@ -61,5 +36,33 @@
       </div>
     </div>
   </div>
+
+  <!-- Right Column: Sent Invites -->
+  <div style="flex: 1 1 50% !important; min-width: 0 !important;">
+    <div class="card" style="margin-top: 0 !important; width: 100% !important;">
+      <div class="card__header">
+        <h3 style="margin: 0;">Sent Invites</h3>
+      </div>
+      <div class="card__body" style="padding: 0;">
+        <ul class="list" style="list-style: none; margin: 0; padding: 0;">
+          <li style="padding: 1rem; border-bottom: 1px solid var(--border-light);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong>Dinner Party #1</strong>
+              <span class="badge primary">8 / 10 Accepted</span>
+            </div>
+            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Lasagna Bolognese</p>
+          </li>
+          <li style="padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong>Weekend Backyard BBQ</strong>
+              <span class="badge primary">4 / 6 Accepted</span>
+            </div>
+            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Honey Glazed Chicken</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </div>
 {% endblock %}
