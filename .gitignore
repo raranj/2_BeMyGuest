@@ -5,4 +5,4 @@ __pycache__/
 *.pyc
 
 data/db.sqlite3
-media/
+media/media/
