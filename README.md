@@ -30,7 +30,6 @@ environment or activate your existing one.
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-python -m pip install Pillow
 New-Item -ItemType Directory -Force data
 ```
 
@@ -40,12 +39,11 @@ On macOS or Linux, the equivalent setup is:
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m pip install Pillow
 mkdir -p data
 ```
 
-Pillow is required by the recipe model's `ImageField` but is not yet listed in
-`requirements.txt`.
+`requirements.txt` installs Django, python-dotenv, and Pillow. Pillow provides
+image support for recipe uploads through Django's `ImageField`.
 
 ### The secret key
 
