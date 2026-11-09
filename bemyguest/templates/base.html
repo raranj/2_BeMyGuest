@@ -2,19 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Be My Guest{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Be My Guest{% endblock %}</title>
 
-  <!-- CSS Deliverables -->
-  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-  <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-  {% block head %}{% endblock %}
+    <!-- Static CSS files from ui-ux folder -->
+    <link rel="stylesheet" href="{% static 'normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-
   <!-- App Header & Navigation Bar -->
   <header class="site-header">
     <div class="container">

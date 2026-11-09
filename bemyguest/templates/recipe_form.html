@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Create Recipe - Be My Guest{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 720px; margin: 3rem auto; padding: 2.5rem; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); color: #222222;">
+  <a href="{% url 'recipes' %}" style="display: inline-block; margin-bottom: 1.5rem; color: #1b535d; text-decoration: none; font-weight: 600;">&larr; Back to Recipes</a>
+
+  <h2 style="margin-top: 0; margin-bottom: 1.5rem; font-weight: 700; color: #1b535d;">Create New Recipe</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div style="margin-bottom: 1.25rem;">
+      <label for="{{ form.recipe_name.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Recipe Name</label>
+      <input type="text" name="recipe_name" id="{{ form.recipe_name.id_for_label }}" value="{{ form.recipe_name.value|default_if_none:'' }}" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>
+    </div>
+
+    <div style="margin-bottom: 1.25rem;">
+      <label for="{{ form.description.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Description</label>
+      <textarea name="description" id="{{ form.description.id_for_label }}" rows="3" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>{{ form.description.value|default_if_none:'' }}</textarea>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.25rem;">
+      <div>
+        <label for="{{ form.preparation_time.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Prep (min)</label>
+        <input type="number" name="preparation_time" id="{{ form.preparation_time.id_for_label }}" value="{{ form.preparation_time.value|default_if_none:'' }}" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>
+      </div>
+      <div>
+        <label for="{{ form.cooking_time.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Cook (min)</label>
+        <input type="number" name="cooking_time" id="{{ form.cooking_time.id_for_label }}" value="{{ form.cooking_time.value|default_if_none:'' }}" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>
+      </div>
+      <div>
+        <label for="{{ form.servings.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Servings</label>
+        <input type="number" name="servings" id="{{ form.servings.id_for_label }}" value="{{ form.servings.value|default_if_none:'' }}" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>
+      </div>
+      <div>
+        <label for="{{ form.difficulty.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Difficulty</label>
+        <input type="text" name="difficulty" id="{{ form.difficulty.id_for_label }}" value="{{ form.difficulty.value|default_if_none:'Easy' }}" placeholder="Easy" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 1.25rem;">
+      <label for="{{ form.ingredients_text.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Ingredients (one item per line)</label>
+      <textarea name="ingredients_text" id="{{ form.ingredients_text.id_for_label }}" rows="4" placeholder="3 bananas&#10;180g cake flour&#10;2 eggs" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>{{ form.ingredients_text.value|default_if_none:'' }}</textarea>
+    </div>
+
+    <div style="margin-bottom: 1.25rem;">
+      <label for="{{ form.instructions_text.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Instructions (one step per line)</label>
+      <textarea name="instructions_text" id="{{ form.instructions_text.id_for_label }}" rows="4" placeholder="Preheat oven to 356°F&#10;Mix wet and dry ingredients&#10;Bake for 40 minutes" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;" required>{{ form.instructions_text.value|default_if_none:'' }}</textarea>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+      <div>
+        <label for="{{ form.dietary_tags_text.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Dietary Tags (comma-separated)</label>
+        <input type="text" name="dietary_tags_text" id="{{ form.dietary_tags_text.id_for_label }}" value="{{ form.dietary_tags_text.value|default_if_none:'' }}" placeholder="Vegetarian, Low Sugar" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+      </div>
+      <div>
+        <label for="{{ form.allergens_text.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Allergens (comma-separated)</label>
+        <input type="text" name="allergens_text" id="{{ form.allergens_text.id_for_label }}" value="{{ form.allergens_text.value|default_if_none:'' }}" placeholder="Dairy, Gluten, Eggs" style="width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+      </div>
+    </div>
+
+    <div style="margin-bottom: 2rem;">
+      <label for="{{ form.image.id_for_label }}" style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #333;">Recipe Photo</label>
+      <input type="file" name="image" id="{{ form.image.id_for_label }}" accept="image/*">
+    </div>
+
+    <button type="submit" style="background-color: #1b535d; color: #ffffff; border: none; border-radius: 9999px; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%;">
+      Publish Recipe
+    </button>
+  </form>
+</div>
+{% endblock %}

@@ -15,10 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+"""
+URL configuration for bemyguest project.
+"""
+
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 from django.views.generic import TemplateView
+
+from features.recipes import views as recipe_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -26,7 +34,13 @@ urlpatterns = [
     path("accounts/login/", auth_views.LoginView.as_view(), name="login"),
     path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
-    path("recipes/", TemplateView.as_view(template_name="recipes.html"), name="recipes"),
+    path("recipes/", recipe_views.recipe_list, name="recipes"),
+    path("recipes/create/", recipe_views.recipe_create, name="recipe_create"),
+    path("recipes/<int:pk>/", recipe_views.recipe_detail, name="recipe_detail"),
+
     path("posts/", TemplateView.as_view(template_name="posts.html"), name="posts"),
     path("invitations/", TemplateView.as_view(template_name="invitations.html"), name="invitations"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

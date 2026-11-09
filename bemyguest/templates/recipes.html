@@ -3,47 +3,41 @@
 {% block title %}Recipes - Be My Guest{% endblock %}
 
 {% block content %}
-<div class="row" style="justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-  <h2>Recipe Collection</h2>
-  <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <label for="sort-by" style="font-weight: 600; font-size: 0.9rem;">Sort by:</label>
-    <select id="sort-by" style="width: auto;">
-      <option value="newest">Newest</option>
-      <option value="oldest">Oldest</option>
-      <option value="popular">Most Popular</option>
-    </select>
+<div class="row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+  <h2 style="margin: 0; font-weight: 700;">Recipe Collection</h2>
+
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <label for="sort-by" style="font-weight: 600; font-size: 0.9rem; margin: 0;">Sort by:</label>
+      <select id="sort-by" style="width: auto; margin: 0;">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+    <a href="{% url 'recipe_create' %}" class="button" style="background-color: var(--stormy-teal, #1b535d); color: white; border-radius: 9999px; padding: 0.5rem 1.5rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center;">
+      Create New Recipe
+    </a>
   </div>
 </div>
 
 <div class="card-grid">
-  <!-- Example Recipe Card 1 -->
+  {% for recipe in recipes %}
   <div class="recipe-card">
-    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--stormy-teal); font-weight: bold;">[ Food Image ]</div>
+    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--stormy-teal); font-weight: bold; overflow: hidden; height: 180px;">
+      {% if recipe.image %}
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.recipe_name }}" style="width: 100%; height: 100%; object-fit: cover;">
+      {% else %}
+        [ Food Image ]
+      {% endif %}
+    </div>
     <div class="recipe-card__content">
-      <span class="badge primary">Dinner</span>
-      <h3 style="margin-top: 0.5rem; font-size: 1.1rem;"><a href="#">Sunday Roast & Veggies</a></h3>
-      <p class="muted" style="font-size: 0.9rem; margin-bottom: 0;">Cozy dinner setup for cold weekends.</p>
+      <span class="badge primary">{{ recipe.difficulty }}</span>
+      <h3 style="margin-top: 0.5rem; font-size: 1.1rem;"><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.recipe_name }}</a></h3>
+      <p class="muted" style="font-size: 0.9rem; margin-bottom: 0;">{{ recipe.description }}</p>
     </div>
   </div>
-
-  <!-- Example Recipe Card 2 -->
-  <div class="recipe-card">
-    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--stormy-teal); font-weight: bold;">[ Food Image ]</div>
-    <div class="recipe-card__content">
-      <span class="badge primary">Bakery</span>
-      <h3 style="margin-top: 0.5rem; font-size: 1.1rem;"><a href="#">Herb Focaccia Bread</a></h3>
-      <p class="muted" style="font-size: 0.9rem; margin-bottom: 0;">Baked with friends and shared fresh.</p>
-    </div>
-  </div>
-
-  <!-- Example Recipe Card 3 -->
-  <div class="recipe-card">
-    <div class="recipe-card__image" style="display: flex; align-items: center; justify-content: center; color: var(--stormy-teal); font-weight: bold;">[ Food Image ]</div>
-    <div class="recipe-card__content">
-      <span class="badge primary">Dessert</span>
-      <h3 style="margin-top: 0.5rem; font-size: 1.1rem;"><a href="#">Summer Berry Tart</a></h3>
-      <p class="muted" style="font-size: 0.9rem; margin-bottom: 0;">Sweet treat for garden gatherings.</p>
-    </div>
-  </div>
+  {% empty %}
+  <p class="muted">No recipes found.</p>
+  {% endfor %}
 </div>
 {% endblock %}
