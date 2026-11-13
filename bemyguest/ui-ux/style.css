@@ -14,10 +14,29 @@
 }
 
 body {
+  font-family: "PT Sans", sans-serif;
   color: var(--ink-black);
-  background: var(--off-white) !important; /* Added !important to test override */
+  background: var(--off-white) !important;
   line-height: 1.6;
 }
+
+.calistoga-regular {
+  font-family: "Calistoga", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6,
+.recipe-card h3,
+.card h4,
+.brand__title,
+.nav a,
+.auth-nav a,
+.auth-nav button {
+  font-family: "Calistoga", serif !important;
+  font-weight: 400 !important;
+}
+
 
 h1, h2, h3, h4, h5 {
   color: var(--ink-black);

@@ -10,10 +10,10 @@
   <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
     <div style="display: flex; align-items: center; gap: 0.5rem;">
       <label for="sort-by" style="font-weight: 600; font-size: 0.9rem; margin: 0;">Sort by:</label>
-      <select id="sort-by" style="width: auto; margin: 0; height: auto; padding: 0.4rem 1rem; border-radius: 999px;">
+        <select id="sort-by" style="width: auto; margin: 0; height: auto; padding: 0.45rem 2.25rem 0.45rem 1.1rem; border-radius: 999px; appearance: none; -webkit-appearance: none; background-color: var(--white, #ffffff); background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23001524%22 stroke-width=%222.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>'); background-repeat: no-repeat; background-position: right 0.9rem center; background-size: 13px;">
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
-      </select>
+        </select>
     </div>
     <a href="{% url 'recipe_create' %}" class="button" style="background-color: var(--stormy-teal, #1b535d); color: white; border-radius: 9999px; padding: 0.5rem 1.5rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center;">
       Create New Recipe
