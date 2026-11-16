@@ -134,7 +134,7 @@ def gathering_create(request):
 
             gathering = form.save(commit=False)
 
-            gathering.host = profile
+            gathering.host = request.user
 
             gathering.status = "open"
 
@@ -167,7 +167,7 @@ def gathering_edit(request, gathering_id):
     gathering = get_object_or_404(
         MealGathering,
         id=gathering_id,
-        host__account=request.user
+        host=request.user
     )
 
     if request.method == "POST":
@@ -236,9 +236,7 @@ def gathering_cancel(request, gathering_id):
 @login_required
 def my_gatherings(request):
 
-    gatherings = MealGathering.objects.filter(
-        host__account=request.user
-    )
+    Recipe.objects.filter(creator=user)
 
     gatherings = gatherings.order_by("-date_time")
 

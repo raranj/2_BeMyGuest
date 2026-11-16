@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.conf import settings
+from django.core.validators import MinValueValidator
 
 
 class MealGathering(models.Model):
@@ -14,7 +16,7 @@ class MealGathering(models.Model):
     id = models.BigAutoField(primary_key=True)
 
     host = models.ForeignKey(
-        "users.User",
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="meal_gatherings"
     )
