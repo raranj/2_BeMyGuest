@@ -215,7 +215,7 @@ def gathering_cancel(request, gathering_id):
     gathering = get_object_or_404(
         MealGathering,
         id=gathering_id,
-        host__account=request.user
+        host=request.user
     )
 
     gathering.status = "cancelled"
@@ -235,10 +235,9 @@ def gathering_cancel(request, gathering_id):
 
 @login_required
 def my_gatherings(request):
-
-    Recipe.objects.filter(creator=user)
-
-    gatherings = gatherings.order_by("-date_time")
+    gatherings = MealGathering.objects.filter(
+        host=request.user
+    ).order_by("-date_time")
 
     context = {
         "gatherings": gatherings,

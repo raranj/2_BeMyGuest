@@ -27,6 +27,7 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 
 from features.recipes import views as recipe_views
+from features.posts import views as post_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -38,7 +39,12 @@ urlpatterns = [
     path("recipes/create/", recipe_views.recipe_create, name="recipe_create"),
     path("recipes/<int:pk>/", recipe_views.recipe_detail, name="recipe_detail"),
 
-    path("posts/", TemplateView.as_view(template_name="posts.html"), name="posts"),
+    path("posts/", post_views.gathering_list, name="posts"),
+    path("posts/create/", post_views.gathering_create, name="gathering_create"),
+    path("posts/mine/", post_views.my_gatherings, name="my_gatherings"),
+    path("posts/<int:gathering_id>/", post_views.gathering_detail, name="gathering_detail"),
+    path("posts/<int:gathering_id>/edit/", post_views.gathering_edit, name="gathering_edit"),
+    path("posts/<int:gathering_id>/cancel/", post_views.gathering_cancel, name="gathering_cancel"),
     path("invitations/", TemplateView.as_view(template_name="invitations.html"), name="invitations"),
 ]
 
