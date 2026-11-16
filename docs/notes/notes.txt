@@ -1,0 +1,69 @@
+BE MY GUEST - PROJECT 2 NOTES
+Updated: November 8, 2026
+
+Concept: A social dining and recipe-sharing web application that helps people
+meet others over shared meals, discover different cuisines, and exchange recipes.
+Target users include college students, people new to a community, and people
+interested in food, cooking, and cultural exchange.
+
+TEAM CONTRIBUTIONS / COMPLETED CODE SO FAR
+------------------------------------------
+
+1. EM BENSINGER - FRONTEND / UI FOUNDATION
+   - Created shared website layouts and pages for Home, Posts, Recipes, and
+     Invitations in bemyguest/templates/.
+   - Added the visual style with normalize.css, skeleton.css, and style.css
+     under bemyguest/ui-ux/.
+   - Established navigation, cards, page layouts, and sample content based
+     on the proposed website experience.
+   - Important limitation: some pages still show placeholder data and do
+     not yet use database-backed features. Later branches also update shared
+     Django template integration.
+
+2. CHU-YUN HWANG - USER PROFILES AND AUTHENTICATION INTEGRATION
+   - Implemented features/users/, including User profile and Allergy models.
+   - Each profile is connected through a OneToOneField named 'account' to
+     Django's authentication user. This is a separate profile model, not a
+     replacement for Django's login User model.
+   - Profile information includes name, email, dietary preference,
+     allergies, account creation time, and host/guest scores.
+   - Implemented profile view, form validation, profile edit/save workflow,
+     login-protected access, allergy suggestions, and user templates.
+   - Added database migrations, admin integration, URLs, tests, and user
+     setup documentation.
+   - Login/logout integration exists; public sign-up is not part of this
+     work as documented in USER_PAGE_SETUP.md.
+
+3. KAREN HUANG - RECIPES
+   - Implemented the Recipe model in features/recipes/models.py.
+   - Recipe fields include creator, name, description, ingredients,
+     instructions, preparation/cooking time, servings, difficulty, dietary
+     tags, allergens, image, and creation time.
+   - Added a RecipeForm with user-friendly ingredients/instructions fields,
+     plus recipe list, create, and detail views.
+   - Added recipe list/create/detail templates, a database migration, and
+     recipe URL code; also integrated shared project settings/templates.
+   - Important limitation: full recipe routing should still be verified
+     after the branches are merged. Automated recipe tests are placeholders.
+
+4. RANJANA RAJAGOPALAN - MEAL GATHERINGS / POSTS
+   - Implemented MealGathering in features/posts/models.py.
+   - Gathering fields include host, title, description, cuisine type,
+     date/time, approximate location, maximum guests, meal name and
+     description, image, optional linked Recipe, created_at, and status.
+   - The host ForeignKey points to 'users.User' profile, and the
+     optional recipe ForeignKey points to 'recipes.Recipe'.
+   - Supported status values: open, full, cancelled, and completed.
+   - Implemented MealGatheringForm validation in features/posts/views.py.
+   - Implemented views for upcoming/searchable open gatherings, details,
+     creation, editing, cancellation, and the host's own gatherings.
+   - Creation requires a signed-in user with a saved profile. A host may
+     choose one of their own recipes. Edit/cancel restrict access to the host.
+   - Important limitation: posts migrations, URL routing, templates for
+     creation/details, and automated posts tests remain to be completed or
+     integrated. The existing posts.html displays static sample content.
+
+NOTES / LIMITATIONS
+-------------------
+- Some planned features (AI matching, testing, final deployment)
+  remain incomplete.

@@ -1,3 +1,8 @@
 .idea/
 .env
 __pycache__/
+.venv/
+*.pyc
+
+data/db.sqlite3
+media/

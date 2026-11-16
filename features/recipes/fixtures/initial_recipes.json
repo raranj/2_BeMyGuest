@@ -1,0 +1,210 @@
+[
+{
+  "model": "recipes.recipe",
+  "pk": 1,
+  "fields": {
+    "creator": 2,
+    "recipe_name": "Banana Bread",
+    "description": "Soft, light sponge cake with reduced sugar.",
+    "ingredients": [
+      "3 bananas",
+      "180g cake flour",
+      "30g brown sugar",
+      "30g white sugar",
+      "2 eggs",
+      "76g butter",
+      "80g milk",
+      "4.2g vanilla extract",
+      "4g baking powder",
+      "2g baking soda",
+      "1.5g salt"
+    ],
+    "instructions": [
+      "Preheat oven to 356°F (180°C).",
+      "In a mixing bowl, mash the 3 bananas and combine with 76g melted butter, 30g brown sugar, 30g white sugar, and 2 eggs.",
+      "Stir well until the sugar dissolves completely.",
+      "Add 80g milk and 4.2g vanilla extract, then mix well.",
+      "Sift in 180g cake flour, 4g baking powder, 2g baking soda, and 1.5g salt.",
+      "Mix gently until just combined and no dry pockets remain.",
+      "Pour batter into the prepared baking pan.",
+      "Bake at 356°F for 40 minutes to check initial rise and color.",
+      "If there is no light browning along the edges, bake for an additional 10–15 minutes.",
+      "Insert a skewer into the center: if it comes out clean with no thick wet batter, remove from the oven.",
+      "If wet batter remains, bake for a final 8–12 minutes until fully set."
+    ],
+    "preparation_time": 15,
+    "cooking_time": 50,
+    "servings": 8,
+    "difficulty": "Easy",
+    "dietary_tags": [
+      "Vegetarian"
+    ],
+    "allergens": [
+      "Dairy",
+      "Gluten",
+      "Eggs"
+    ],
+    "image": "recipes/Screenshot_2026-11-07_at_4.27.27PM.png",
+    "created_at": "2026-11-07T22:28:40.800Z"
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 2,
+  "fields": {
+    "creator": 2,
+    "recipe_name": "Pumpkin Soup",
+    "description": "A velvety, comforting pumpkin soup enriched with whole milk, butter, and blended unseasoned nuts for extra body and subtle richness.",
+    "ingredients": [
+      "700 g pumpkin (peeled, deseeded, and cubed)",
+      "100 g onions (chopped)",
+      "5 g garlic (sliced)",
+      "10 g unseasoned nuts (e.g., cashews, almonds, or walnuts)",
+      "10 g unsalted butter",
+      "1–2 tbsp cooking oil",
+      "700 ml hot water",
+      "200 ml whole milk",
+      "Salt (to taste)",
+      "Black pepper (to taste)"
+    ],
+    "instructions": [
+      "Heat a pot over medium heat and add a splash of cooking oil. Add the sliced garlic and sauté until fragrant. Add the onions and stir-fry until softened and translucent.",
+      "Add the pumpkin to the pot and stir-fry for 1 to 2 minutes, then toss in the unseasoned nuts.",
+      "Pour in the hot water and bring the mixture to a boil over medium heat. Once boiling, cover the pot with a lid, reduce the heat to low, and simmer for 30 minutes until the pumpkin and nuts are completely tender.",
+      "Turn off the heat. Use an immersion (hand) blender directly in the pot to blend the mixture until completely smooth and creamy.",
+      "Stir in the unsalted butter and whole milk. Turn the heat back on to low just until the soup is warmed through, then season with salt and black pepper to taste before serving."
+    ],
+    "preparation_time": 15,
+    "cooking_time": 35,
+    "servings": 4,
+    "difficulty": "Easy",
+    "dietary_tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Egg-Free",
+      "Soy-Free"
+    ],
+    "allergens": [
+      "Tree Nuts",
+      "Milk",
+      "Dairy"
+    ],
+    "image": "recipes/Pumpkin_Soup_3vywBYa.jpg",
+    "created_at": "2026-11-16T02:15:52.512Z"
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 3,
+  "fields": {
+    "creator": 2,
+    "recipe_name": "Taiwanese Beef Noodle Soup",
+    "description": "Taiwan's iconic comfort dish (Niu Rou Mian), featuring melt-in-your-mouth braised beef shank simmered in a rich, deeply aromatic soy and spicy bean paste broth. Served over chewy wheat noodles and topped with crisp bok choy, fresh scallions, and tangy pickled mustard greens, every bowl delivers a balance of savory depth, gentle warmth, and umami.",
+    "ingredients": [
+      "900 g beef shank (cut into 4 cm / 1.5-inch chunks)",
+      "2 tbsp neutral cooking oil",
+      "40 g fresh ginger (sliced into thick coins)",
+      "6 cloves garlic (smashed)",
+      "4 stalks scallions (cut into 5 cm lengths, white and green parts separated)",
+      "1 medium onion (quartered)",
+      "2 medium tomatoes (cut into wedges)",
+      "2 tbsp spicy broad bean paste (doubanjiang)",
+      "20 g rock sugar (or brown sugar)",
+      "80 ml light soy sauce",
+      "40 ml dark soy sauce",
+      "60 ml Shaoxing rice wine",
+      "1.8 liters water (or unsalted beef stock)",
+      "1 spice packet (containing 2 star anise, 1 cinnamon stick, 3 bay leaves, 1 tsp Sichuan peppercorns, and 2 dried red chilies)",
+      "400 g fresh or dried white wheat noodles (yangchun or knife-cut noodles)",
+      "4 heads baby bok choy (halved lengthwise)",
+      "60 g Taiwanese pickled mustard greens (suan cai, finely chopped, for garnish)",
+      "Fresh cilantro and chopped scallions (for garnish)"
+    ],
+    "instructions": [
+      "Place the beef shank chunks in a large pot and cover with cold water. Bring to a boil over high heat and boil for 3 to 5 minutes to draw out impurities. Drain the beef, rinse thoroughly under warm water, and pat dry.",
+      "Heat the cooking oil in a heavy-bottomed pot or Dutch oven over medium heat. Add the ginger, smashed garlic, and white parts of the scallions, stir-frying for 2 minutes until fragrant.",
+      "Push the aromatics to the side, add the doubanjiang and rock sugar, and fry for 1 minute until the oil turns red and the sugar begins to melt. Add the blanched beef and toss for 2 to 3 minutes until evenly coated.",
+      "Pour the Shaoxing rice wine around the edge of the pot to deglaze. Add the light soy sauce, dark soy sauce, tomatoes, onion, spice packet, and 1.8 liters of water. Bring to a boil over high heat.",
+      "Once boiling, skim off any foam, cover with a lid, and reduce the heat to low. Simmer gently for 1 hour 45 minutes to 2 hours until the beef is fork-tender. Remove and discard the spice packet and spent aromatics.",
+      "Bring a separate pot of water to a boil. Cook the wheat noodles according to package instructions until chewy, blanching the baby bok choy in the same water during the final 45 seconds. Drain well.",
+      "Divide the noodles into 4 large bowls. Ladle the hot broth and tender beef chunks over the top, then garnish with the blanched bok choy, pickled mustard greens, fresh scallions, and cilantro."
+    ],
+    "preparation_time": 25,
+    "cooking_time": 135,
+    "servings": 4,
+    "difficulty": "Medium",
+    "dietary_tags": [
+      "Dairy-Free",
+      "Nut-Free",
+      "Egg-Free"
+    ],
+    "allergens": [
+      "Soy",
+      "Gluten",
+      "Alcohol"
+    ],
+    "image": "recipes/Taiwanese_Beef_Noodle.png",
+    "created_at": "2026-11-16T02:34:36.189Z"
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 4,
+  "fields": {
+    "creator": 2,
+    "recipe_name": "Remy’s Ratatouille",
+    "description": "Want to try Remy’s dish from Ratatouille? Give this colorful, comforting French classic a try, featuring thinly sliced summer vegetables arranged in a spiral over a rich tomato-pepper sauce and baked with garlic and fresh herbs.",
+    "ingredients": [
+      "For the Pepper-Tomato Base Sauce",
+      "1 tbsp olive oil",
+      "1 medium yellow onion (finely diced)",
+      "3 cloves garlic (minced)",
+      "1 red bell pepper (seeded and finely diced)",
+      "1 yellow bell pepper (seeded and finely diced)",
+      "400 g crushed tomatoes (1 standard 14-oz can)",
+      "2 tbsp fresh basil (chopped)",
+      "1 tsp fresh thyme leaves",
+      "1/2 tsp salt",
+      "1/4 tsp black pepper",
+      "For the Layered Vegetables & Herb Oil",
+      "1 medium Japanese or globe eggplant (sliced into 3 mm / 1/8-inch rounds)",
+      "2 medium zucchini (sliced into 3 mm / 1/8-inch rounds)",
+      "2 medium yellow squash (sliced into 3 mm / 1/8-inch rounds)",
+      "4 Roma tomatoes (sliced into 3 mm / 1/8-inch rounds)",
+      "2 tbsp olive oil",
+      "2 cloves garlic (finely minced)",
+      "1 tsp fresh thyme leaves",
+      "1/2 tsp salt",
+      "1/4 tsp black pepper",
+      "Fresh basil leaves (for garnish)"
+    ],
+    "instructions": [
+      "Preheat oven to 375°F (190°C). Slice the eggplant, zucchini, yellow squash, and Roma tomatoes into uniform 3 mm (1/8-inch) rounds using a sharp knife or mandoline so they cook evenly.",
+      "Heat 1 tablespoon of olive oil in an oven-safe skillet or pan over medium heat. Add the diced onion, red bell pepper, and yellow bell pepper, sautéing for 6 to 8 minutes until softened. Stir in the minced garlic and cook for 1 minute until fragrant.",
+      "Pour in the crushed tomatoes, salt, and black pepper. Simmer for 10 minutes until thickened, then remove from heat and stir in the chopped basil and thyme. (Optional: Use an immersion blender for 10 seconds if you prefer a smoother base sauce.) Spread the sauce evenly across the bottom of your baking dish.",
+      "Starting from the outer edge of the dish and working inward in a tight spiral, layer alternating slices of eggplant, zucchini, yellow squash, and tomato slightly overlapping one another over the sauce.",
+      "In a small bowl, whisk together the remaining 2 tablespoons of olive oil, minced garlic, thyme, salt, and black pepper. Drizzle or brush this mixture evenly over the arranged vegetables.",
+      "Cut a piece of parchment paper to fit directly over the vegetables (this traps steam so they soften without drying out). Bake for 40 minutes, then remove the parchment paper and bake for another 15 minutes until the vegetables are tender and lightly browned on the edges.",
+      "Let the ratatouille rest for 5 minutes before serving, topped with fresh torn basil leaves."
+    ],
+    "preparation_time": 30,
+    "cooking_time": 55,
+    "servings": 4,
+    "difficulty": "Medium",
+    "dietary_tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Nut-Free",
+      "Egg-Free",
+      "Soy-Free"
+    ],
+    "allergens": [
+      "None"
+    ],
+    "image": "recipes/Remys_Ratatouille.jpeg",
+    "created_at": "2026-11-16T02:43:11.605Z"
+  }
+}
+]
