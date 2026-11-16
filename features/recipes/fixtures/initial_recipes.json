@@ -1,0 +1,96 @@
+[
+{
+  "model": "recipes.recipe",
+  "pk": 1,
+  "fields": {
+    "creator": 2,
+    "recipe_name": "Banana Bread",
+    "description": "Soft, light sponge cake with reduced sugar.",
+    "ingredients": [
+      "3 bananas",
+      "180g cake flour",
+      "30g brown sugar",
+      "30g white sugar",
+      "2 eggs",
+      "76g butter",
+      "80g milk",
+      "4.2g vanilla extract",
+      "4g baking powder",
+      "2g baking soda",
+      "1.5g salt"
+    ],
+    "instructions": [
+      "Preheat oven to 356°F (180°C).",
+      "In a mixing bowl, mash the 3 bananas and combine with 76g melted butter, 30g brown sugar, 30g white sugar, and 2 eggs.",
+      "Stir well until the sugar dissolves completely.",
+      "Add 80g milk and 4.2g vanilla extract, then mix well.",
+      "Sift in 180g cake flour, 4g baking powder, 2g baking soda, and 1.5g salt.",
+      "Mix gently until just combined and no dry pockets remain.",
+      "Pour batter into the prepared baking pan.",
+      "Bake at 356°F for 40 minutes to check initial rise and color.",
+      "If there is no light browning along the edges, bake for an additional 10–15 minutes.",
+      "Insert a skewer into the center: if it comes out clean with no thick wet batter, remove from the oven.",
+      "If wet batter remains, bake for a final 8–12 minutes until fully set."
+    ],
+    "preparation_time": 15,
+    "cooking_time": 50,
+    "servings": 8,
+    "difficulty": "Easy",
+    "dietary_tags": [
+      "Vegetarian"
+    ],
+    "allergens": [
+      "Dairy",
+      "Gluten",
+      "Eggs"
+    ],
+    "image": "recipes/Screenshot_2026-11-07_at_4.27.27PM.png",
+    "created_at": "2026-11-07T22:28:40.800Z"
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 2,
+  "fields": {
+    "creator": 2,
+    "recipe_name": "Pumpkin Soup",
+    "description": "A velvety, comforting pumpkin soup enriched with whole milk, butter, and blended unseasoned nuts for extra body and subtle richness.",
+    "ingredients": [
+      "700 g pumpkin (peeled, deseeded, and cubed)",
+      "100 g onions (chopped)",
+      "5 g garlic (sliced)",
+      "10 g unseasoned nuts (e.g., cashews, almonds, or walnuts)",
+      "10 g unsalted butter",
+      "1–2 tbsp cooking oil",
+      "700 ml hot water",
+      "200 ml whole milk",
+      "Salt (to taste)",
+      "Black pepper (to taste)"
+    ],
+    "instructions": [
+      "Heat a pot over medium heat and add a splash of cooking oil. Add the sliced garlic and sauté until fragrant. Add the onions and stir-fry until softened and translucent.",
+      "Add the pumpkin to the pot and stir-fry for 1 to 2 minutes, then toss in the unseasoned nuts.",
+      "Pour in the hot water and bring the mixture to a boil over medium heat. Once boiling, cover the pot with a lid, reduce the heat to low, and simmer for 30 minutes until the pumpkin and nuts are completely tender.",
+      "Turn off the heat. Use an immersion (hand) blender directly in the pot to blend the mixture until completely smooth and creamy.",
+      "Stir in the unsalted butter and whole milk. Turn the heat back on to low just until the soup is warmed through, then season with salt and black pepper to taste before serving."
+    ],
+    "preparation_time": 15,
+    "cooking_time": 35,
+    "servings": 4,
+    "difficulty": "Easy",
+    "dietary_tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Egg-Free",
+      "Soy-Free"
+    ],
+    "allergens": [
+      "Tree Nuts",
+      "Milk",
+      "Dairy"
+    ],
+    "image": "recipes/Pumpkin_Soup_3vywBYa.jpg",
+    "created_at": "2026-11-16T02:15:52.512Z"
+  }
+}
+]
