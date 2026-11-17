@@ -432,3 +432,70 @@ h1, h2, h3, h4, h5 {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ===== Invitations Demo ===== */
+
+.invitation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.invitation-grid .card {
+  margin-top: 0;
+  min-width: 0;
+}
+
+.invitation-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.invitation-item:first-child {
+  padding-top: 0;
+}
+
+.invitation-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.invitation-item h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.invitation-item p {
+  margin-bottom: 0.75rem;
+}
+
+.invitation-response {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.invitation-response .button {
+  margin-bottom: 0;
+}
+
+.invitation-status {
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+
+.status-accepted {
+  color: #217346;
+}
+
+.status-declined {
+  color: var(--brandy);
+}
+
+@media (max-width: 768px) {
+  .invitation-grid {
+    grid-template-columns: 1fr;
+  }
+}
