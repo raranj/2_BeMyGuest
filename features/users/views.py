@@ -24,7 +24,7 @@ def user_page(request):
         messages.success(request, "Your profile has been saved.")
         return redirect("users:user")
     editing = request.method == "POST" or request.GET.get("edit") == "1"
-    return render(request, "users/user.html", {"form": form, "profile": profile, "editing": editing})
+    return render(request, "user.html", {"form": form, "profile": profile, "editing": editing})
 
 
 @login_required
