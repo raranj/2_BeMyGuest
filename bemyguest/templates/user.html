@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}My Profile - Be My Guest{% endblock %}
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'normalize.css' %}">
+<link rel="stylesheet" href="{% static 'skeleton.css' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+  .profile-details { flex: 2; min-width: min(100%, 320px); }
+  .profile-ratings { flex: 1; min-width: min(100%, 280px); }
+  .profile-page .card__header h3 { margin: 0; }
+  .profile-page .profile-details-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .profile-page .profile-edit { padding: 0.3rem 0.8rem; font-size: 0.85rem; }
+  .profile-page .profile-field { margin-bottom: 1.25rem; }
+  .profile-page label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+  .profile-page .muted { color: var(--stormy-teal); }
+  .profile-page .profile-help { font-size: 0.9rem; margin: 0.4rem 0 0; }
+  .profile-page .errorlist { color: var(--brandy); padding-left: 1.25rem; }
+  .profile-page .profile-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .profile-page .profile-message { padding: 1rem; background: var(--surface-tint); border: 1px solid var(--border-light); border-radius: var(--radius); }
+  .allergy-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .allergy-tag { display: inline-flex; align-items: center; gap: 0.5rem; overflow-wrap: anywhere; }
+  .allergy-tag button { padding: 0.1rem 0.4rem; font-size: 1rem; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="profile-page">
+<h2>My Profile</h2>
+<p class="muted">Share your food preferences to help hosts plan a welcoming meal.</p>
+{% for message in messages %}<p class="profile-message" role="status">{{ message }}</p>{% endfor %}
+<div class="row">
+  <section class="card profile-details" aria-labelledby="profile-details-heading">
+    <div class="card__header profile-details-header">
+      <h3 id="profile-details-heading">Profile details</h3>
+      {% if not editing %}<a class="button button-outline profile-edit" href="{% url 'users:user' %}?edit=1" aria-label="Edit profile details">Edit</a>{% endif %}
+    </div>
+    <div class="card__body">
+      {% if editing %}
+      <form method="post" action="{% url 'users:user' %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+        <div class="profile-field">
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.help_text %}<p class="muted profile-help" id="{{ field.auto_id }}_helptext">{{ field.help_text }}</p>{% endif %}
+          {{ field.errors }}
+        </div>
+        {% endfor %}
+        <div class="profile-actions">
+          <button type="submit" class="button">Save profile</button>
+          <a class="button button-outline" href="{% url 'users:user' %}">Cancel changes</a>
+        </div>
+      </form>
+      {% else %}
+      <p><strong>Name:</strong> {% if profile %}{{ profile.name }}{% else %}{{ form.name.value|default:"Not provided" }}{% endif %}</p>
+      <p><strong>Email:</strong> {% if profile %}{{ profile.email }}{% else %}{{ form.email.value|default:"Not provided" }}{% endif %}</p>
+      <p><strong>Dietary preference:</strong> {% if profile %}{{ profile.get_dietary_preferences_display }}{% else %}Not provided{% endif %}</p>
+      <p><strong>Allergies:</strong> {% if profile %}{{ profile.allergies.all|join:", "|default:"Not provided" }}{% else %}Not provided{% endif %}</p>
+      {% endif %}
+    </div>
+  </section>
+  <section class="profile-ratings" aria-labelledby="profile-ratings-heading">
+    <div class="card">
+    <div class="card__header"><h3 id="profile-ratings-heading">Community ratings</h3></div>
+    <div class="card__body">
+      <p><strong>Host score:</strong> {% if profile.host_score != None %}{{ profile.host_score|floatformat:1 }} / 5{% else %}Not rated yet{% endif %}</p>
+      <p><strong>Guest score:</strong> {% if profile.guest_score != None %}{{ profile.guest_score|floatformat:1 }} / 5{% else %}Not rated yet{% endif %}</p>
+      <p class="muted">Ratings cannot be changed on this page.</p>
+      {% if profile %}<p><strong>Member since:</strong> {{ profile.created_at|date:"F j, Y" }}</p>{% endif %}
+    </div>
+    </div>
+  </section>
+</div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+{% if editing %}
+<script src="{% static 'users/allergies.js' %}" defer data-suggestions-url="{% url 'users:allergy_suggestions' %}"></script>
+{% endif %}
+{% endblock %}

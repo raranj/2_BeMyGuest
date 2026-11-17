@@ -11,12 +11,23 @@
   {% endif %}
 
   <h2>{{ recipe.recipe_name }}</h2>
-  <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+  <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1rem;">
     <span class="badge primary">{{ recipe.difficulty }}</span>
     <span class="muted">Prep: {{ recipe.preparation_time }}m</span>
     <span class="muted">Cook: {{ recipe.cooking_time }}m</span>
     <span class="muted">Servings: {{ recipe.servings }}</span>
   </div>
+
+  {% if recipe.dietary_tags or recipe.allergens %}
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1.25rem;">
+      {% for tag in recipe.dietary_tags %}
+        <span class="badge" style="background-color: #e6f4ea; color: #137333;">{{ tag }}</span>
+      {% endfor %}
+      {% for allergen in recipe.allergens %}
+        <span class="badge" style="background-color: #fce8e6; color: #c5221f;">Contains: {{ allergen }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
 
   <p style="font-size: 1.1rem; line-height: 1.6;">{{ recipe.description }}</p>
 
