@@ -1,129 +1,199 @@
-
 {% extends "base.html" %}
 
 {% block title %}
-  {{ gathering.title }} - Be My Guest
+{{ gathering.title }} - Be My Guest
 {% endblock %}
 
 {% block content %}
 
 <a href="{% url 'posts' %}" class="back-link">
-  &larr; Back to Community Posts
+    &larr; Back to Community Posts
 </a>
 
 <div class="card gathering-detail">
 
-  <div class="card__header">
-    <div class="page-heading">
-      <h2 style="margin: 0;">{{ gathering.title }}</h2>
-      <span class="badge primary">
+    <div class="card__header">
+        <div class="page-heading">
+            <h2 style="margin: 0;">{{ gathering.title }}</h2>
+            <span class="badge primary">
         {{ gathering.get_status_display }}
       </span>
-    </div>
-  </div>
-
-  <div class="card__body">
-
-    {% if gathering.meal_image %}
-      <img
-        class="gathering-detail-image"
-        src="{{ gathering.meal_image.url }}"
-        alt="{{ gathering.title }}"
-      >
-    {% endif %}
-
-    <h3>Gathering Information</h3>
-
-    <div class="gathering-info-grid">
-      <p>
-        <strong>Host:</strong>
-        {{ gathering.host.username }}
-      </p>
-
-      <p>
-        <strong>Cuisine:</strong>
-        {{ gathering.cuisine_type }}
-      </p>
-
-      <p>
-        <strong>Date & Time:</strong>
-        {{ gathering.date_time|date:"F j, Y, g:i A" }}
-      </p>
-
-      <p>
-        <strong>Approximate Location:</strong>
-        {{ gathering.location }}
-      </p>
-
-      <p>
-        <strong>Maximum Guests:</strong>
-        {{ gathering.max_guests }}
-      </p>
+        </div>
     </div>
 
-    <h3>About This Gathering</h3>
-    <p>{{ gathering.description|default:"No description provided." }}</p>
+    <div class="card__body">
 
-    {% if gathering.meal_name %}
-      <h3>What's on the Menu?</h3>
-      <p><strong>{{ gathering.meal_name }}</strong></p>
-      <p>{{ gathering.meal_description }}</p>
-    {% endif %}
-
-    {% if gathering.recipe %}
-      <p>
-        <a
-          href="{% url 'recipe_detail' gathering.recipe.pk %}"
-          class="button button-outline">
-          View Related Recipe
-        </a>
-      </p>
-    {% endif %}
-
-    <hr>
-
-    <div class="gathering-actions">
-
-      {% if user.is_authenticated and user == gathering.host %}
-
-        <a
-          href="{% url 'gathering_edit' gathering.id %}"
-          class="button">
-          Edit Gathering
-        </a>
-
-        {% if gathering.status != "cancelled" %}
-          <form
-            method="post"
-            action="{% url 'gathering_cancel' gathering.id %}"
-            onsubmit="return confirm('Cancel this gathering?');">
-
-            {% csrf_token %}
-
-            <button type="submit" class="button button-outline">
-              Cancel Gathering
-            </button>
-          </form>
+        {% if gathering.meal_image %}
+        <img
+                class="gathering-detail-image"
+                src="{{ gathering.meal_image.url }}"
+                alt="{{ gathering.title }}"
+        >
         {% endif %}
 
-      {% elif gathering.status == "open" %}
+        <h3>Gathering Information</h3>
 
-        <button
-          type="button"
-          class="button"
-          onclick="this.textContent='Request Sent!';
-                   this.disabled=true;">
-          Request to Join
-        </button>
+        <div class="gathering-info-grid">
+            <p>
+                <strong>Host:</strong>
+                {{ gathering.host.username }}
+            </p>
 
-      {% endif %}
+            <p>
+                <strong>Cuisine:</strong>
+                {{ gathering.cuisine_type }}
+            </p>
 
-      <a href="{% url 'posts' %}" class="button button-outline">
-        Browse More Posts
-      </a>
+            <p>
+                <strong>Date & Time:</strong>
+                {{ gathering.date_time|date:"F j, Y, g:i A" }}
+            </p>
 
+            <p>
+                <strong>Approximate Location:</strong>
+                {{ gathering.location }}
+            </p>
+
+            <p>
+                <strong>Maximum Guests:</strong>
+                {{ gathering.max_guests }}
+            </p>
+        </div>
+
+        <h3>About This Gathering</h3>
+        <p>{{ gathering.description|default:"No description provided." }}</p>
+
+        {% if gathering.meal_name %}
+        <h3>What's on the Menu?</h3>
+        <p><strong>{{ gathering.meal_name }}</strong></p>
+        <p>{{ gathering.meal_description }}</p>
+        {% endif %}
+
+        {% if gathering.recipe %}
+        <p>
+            <a
+                    href="{% url 'recipe_detail' gathering.recipe.pk %}"
+                    class="button button-outline">
+                View Related Recipe
+            </a>
+        </p>
+        {% endif %}
+
+        <hr>
+
+        <div class="gathering-actions">
+
+            {% if user.is_authenticated and user == gathering.host %}
+
+            <a
+                    href="{% url 'gathering_edit' gathering.id %}"
+                    class="button">
+                Edit Gathering
+            </a>
+
+            {% if gathering.status != "cancelled" %}
+            <form
+                    method="post"
+                    action="{% url 'gathering_cancel' gathering.id %}"
+                    onsubmit="return confirm('Cancel this gathering?');">
+
+                {% csrf_token %}
+
+                <button type="submit" class="button button-outline">
+                    Cancel Gathering
+                </button>
+            </form>
+            {% endif %}
+
+            {% elif gathering.status == "open" and user.is_authenticated %}
+
+            <button
+                    type="button"
+                    id="request-join-button"
+                    class="button"
+                    data-id="{{ gathering.id }}"
+                    data-title="{{ gathering.title }}"
+                    data-host="{{ gathering.host.username }}"
+                    data-date="{{ gathering.date_time|date:'M j, Y, g:i A' }}">
+                Request to Join
+            </button>
+
+            {% elif gathering.status == "open" %}
+
+            <a href="{% url 'login' %}?next={{ request.path|urlencode }}"
+               class="button">
+                Log In to Request to Join
+            </a>
+
+            {% endif %}
+
+
+            <a href="{% url 'posts' %}" class="button button-outline">
+                Browse More Posts
+            </a>
+
+        </div>
     </div>
-  </div>
 </div>
+{% endblock %}
 
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const button = document.getElementById("request-join-button");
+        if (!button) return;
+
+        const storageKey =
+            "bemyguest_join_requests_{{ user.pk|escapejs }}";
+
+        function getRequests() {
+            try {
+                const saved = JSON.parse(
+                    localStorage.getItem(storageKey)
+                );
+                return Array.isArray(saved) ? saved : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function showPending() {
+            button.textContent = "Request Pending";
+            button.disabled = true;
+        }
+
+        const gatheringId = button.dataset.id;
+
+        if (getRequests().some(request => request.id === gatheringId)) {
+            showPending();
+        }
+
+        button.addEventListener("click", function () {
+            const requests = getRequests();
+
+            if (requests.some(request => request.id === gatheringId)) {
+                showPending();
+                return;
+            }
+
+            requests.push({
+                id: gatheringId,
+                title: button.dataset.title,
+                host: button.dataset.host,
+                date: button.dataset.date,
+                status: "Pending"
+            });
+
+            try {
+                localStorage.setItem(
+                    storageKey,
+                    JSON.stringify(requests)
+                );
+                showPending();
+            } catch (error) {
+                alert("Unable to save your request in this browser.");
+            }
+        });
+    });
+</script>
 {% endblock %}
