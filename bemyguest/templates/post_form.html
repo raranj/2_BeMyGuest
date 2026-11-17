@@ -1,46 +1,87 @@
 
 {% extends "base.html" %}
 
-{% block title %}Create Gathering - Be My Guest{% endblock %}
+{% block title %}
+  {% if editing %}Edit Gathering{% else %}Create Gathering{% endif %}
+  - Be My Guest
+{% endblock %}
 
 {% block content %}
 
-<h2>
-  {% if editing %}Edit Gathering{% else %}Host a Meal Gathering{% endif %}
+<a href="{% url 'posts' %}" class="back-link">
+  &larr; Back to Community Posts
+</a>
+
+<h2 style="margin-top: 1.5rem;">
+  {% if editing %}
+    Edit Your Gathering
+  {% else %}
+    Host a Meal Gathering
+  {% endif %}
 </h2>
 
 <p>Bring people together over food!</p>
 
-<div class="card">
+<div class="card gathering-form-card">
+
   <div class="card__header">
-    <h3>Gathering Information</h3>
+    <h3 style="margin: 0;">Gathering Information</h3>
   </div>
 
   <div class="card__body">
+
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
 
       {{ form.non_field_errors }}
 
-      {% for field in form %}
-        <div style="margin-bottom: 1.5rem;">
-          <label for="{{ field.id_for_label }}">
-            {{ field.label }}
-          </label>
+      <div class="gathering-form-fields">
 
-          {{ field }}
-          {{ field.errors }}
-        </div>
-      {% endfor %}
+        {% for field in form %}
 
-      <button type="submit" class="button">
-        {% if editing %}Save Changes{% else %}Create Gathering{% endif %}
-      </button>
+          <div class="gathering-field">
 
-      <a href="{% url 'posts' %}" class="button button-outline">
-        Cancel
-      </a>
+            <label for="{{ field.id_for_label }}">
+              {{ field.label }}
+            </label>
+
+            {{ field }}
+
+            {% if field.help_text %}
+              <small>{{ field.help_text }}</small>
+            {% endif %}
+
+            {% if field.errors %}
+              <div class="form-errors">
+                {{ field.errors }}
+              </div>
+            {% endif %}
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+      <div class="gathering-actions">
+
+        <button type="submit" class="button">
+          {% if editing %}
+            Save Changes
+          {% else %}
+            Create Gathering
+          {% endif %}
+        </button>
+
+        <a href="{% url 'posts' %}"
+           class="button button-outline">
+          Cancel
+        </a>
+
+      </div>
+
     </form>
+
   </div>
 </div>
 
