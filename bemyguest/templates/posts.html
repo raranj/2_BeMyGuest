@@ -1,71 +1,178 @@
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block title %}Posts - Be My Guest{% endblock %}
 
 {% block content %}
-<!-- Top Header Row: Title & Action Button aligned together -->
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-  <h2 style="margin: 0;">Community Posts</h2>
-  <a href="{% url 'gathering_create' %}" class="button">
-    Create New Post
-  </a>
-</div>
 
-<!-- Two-Column Grid Top-Aligned -->
-<div class="card-grid" style="display: flex !important; align-items: flex-start !important; gap: 1.5rem !important;">
+<div class="page-heading">
 
-  <!-- Post Card 1 -->
-  <div class="card" style="flex: 1; min-width: 0; align-self: flex-start !important; margin-top: 0 !important; background-color: var(--card-bg, #FFF6E8); border: 2px solid var(--stormy-teal); border-radius: 12px; padding: 1.25rem;">
-
-    <!-- Top Row Header -->
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; min-height: 52px;">
-      <div>
-        <h4 style="margin: 0 0 0.4rem 0; color: var(--ink-black); font-size: 1.2rem; font-weight: 700; line-height: 1.2;">Taco Tuesday Night</h4>
-        <span class="badge secondary">Alone w/ Friends</span>
-      </div>
-      <a href="{% url 'recipes' %}" class="button button-outline" style="font-size: 0.85rem; padding: 0.4rem 0.8rem; white-space: nowrap;">
-        Recipe ↗
-      </a>
-    </div>
-
-    <!-- Body Content Row -->
-    <div style="display: grid; grid-template-columns: 1fr 150px; gap: 1rem; align-items: center; margin-top: 1.25rem;">
-      <div style="font-size: 0.95rem; color: var(--ink-black); line-height: 1.4;">
-        We got together to try out a brand new spicy salsa recipe. Everyone loved the homemade guacamole!
-      </div>
-      <div style="height: 130px; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--stormy-teal);">
-        <img src="{% static 'images/TacoTuesdayNight.jpg' %}" alt="Taco Tuesday Night" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-    </div>
-
+  <div>
+    <h2>
+      {% if mine %}My Gatherings{% else %}Community Posts{% endif %}
+    </h2>
+    <p class="muted">
+      Discover new meals and meet new people!
+    </p>
   </div>
 
-  <!-- Post Card 2 -->
-  <div class="card" style="flex: 1; min-width: 0; align-self: flex-start !important; margin-top: 0 !important; background-color: var(--card-bg, #FFF6E8); border: 2px solid var(--stormy-teal); border-radius: 12px; padding: 1.25rem;">
+  <div class="gathering-actions">
+    <a href="{% url 'my_gatherings' %}"
+       class="button button-outline">
+      My Gatherings
+    </a>
 
-    <!-- Top Row Header -->
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; min-height: 52px;">
-      <div>
-        <h4 style="margin: 0 0 0.4rem 0; color: var(--ink-black); font-size: 1.2rem; font-weight: 700; line-height: 1.2;">Sunday Morning Brunch</h4>
-        <span class="badge primary">Hosted</span>
-      </div>
-      <a href="{% url 'recipes' %}" class="button button-outline" style="font-size: 0.85rem; padding: 0.4rem 0.8rem; white-space: nowrap;">
-        Recipe ↗
-      </a>
-    </div>
-
-    <!-- Body Content Row -->
-    <div style="display: grid; grid-template-columns: 1fr 150px; gap: 1rem; align-items: center; margin-top: 1.25rem;">
-      <div style="font-size: 0.95rem; color: var(--ink-black); line-height: 1.4;">
-        Fluffy buttermilk waffles, fresh berries, and dark roast coffee with neighbors.
-      </div>
-      <div style="height: 130px; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--stormy-teal);">
-        <img src="{% static 'images/SundayMorningBrunch.jpg' %}" alt="Sunday Morning Brunch" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-    </div>
-
+    <a href="{% url 'gathering_create' %}"
+       class="button">
+      + Create New Post
+    </a>
   </div>
 
 </div>
+
+{% if not mine %}
+  <form method="get" action="{% url 'posts' %}"
+        class="post-search">
+
+    <input
+      type="text"
+      name="q"
+      value="{{ search|default:'' }}"
+      placeholder="Search food, cuisine, or location...">
+
+    <button type="submit" class="button">
+      Search
+    </button>
+  </form>
+{% endif %}
+
+<div class="gathering-card-grid">
+
+  {% for gathering in gatherings %}
+
+    <div class="card gathering-post-card">
+
+      <div class="page-heading">
+        <div>
+          <h4>{{ gathering.title }}</h4>
+          <span class="badge primary">
+            {{ gathering.get_status_display }}
+          </span>
+        </div>
+      </div>
+
+      {% if gathering.meal_image %}
+        <img
+          src="{{ gathering.meal_image.url }}"
+          alt="{{ gathering.title }}"
+          class="gathering-card-image">
+      {% endif %}
+
+      <p>
+        {{ gathering.description|truncatewords:25 }}
+      </p>
+
+      <p>
+        <strong>Cuisine:</strong>
+        {{ gathering.cuisine_type }}
+      </p>
+
+      <p>
+        <strong>Date:</strong>
+        {{ gathering.date_time|date:"M j, Y, g:i A" }}
+      </p>
+
+      <p>
+        <strong>Location:</strong>
+        {{ gathering.location }}
+      </p>
+
+      <p>
+        <strong>Maximum Guests:</strong>
+        {{ gathering.max_guests }}
+      </p>
+
+      <a
+        href="{% url 'gathering_detail' gathering.id %}"
+        class="button">
+        View Gathering
+      </a>
+
+    </div>
+
+  {% endfor %}
+
+  {% if not mine and not search %}
+
+    <!-- Existing sample post: Taco Tuesday -->
+    <div class="card gathering-post-card">
+
+      <div class="page-heading">
+        <div>
+          <h4>Taco Tuesday Night</h4>
+          <span class="badge secondary">
+            Community Favorite
+          </span>
+        </div>
+      </div>
+
+      <img
+        src="{% static 'images/TacoTuesdayNight.jpg' %}"
+        alt="Taco Tuesday"
+        class="gathering-card-image">
+
+      <p>
+        We got together to try out a brand new
+        spicy salsa recipe. Everyone loved
+        the homemade guacamole!
+      </p>
+
+      <a href="{% url 'recipes' %}"
+         class="button button-outline">
+        Browse Recipes
+      </a>
+
+    </div>
+
+    <!-- Existing sample post: Sunday Brunch -->
+    <div class="card gathering-post-card">
+
+      <div class="page-heading">
+        <div>
+          <h4>Sunday Morning Brunch</h4>
+          <span class="badge primary">
+            Hosted
+          </span>
+        </div>
+      </div>
+
+      <img
+        src="{% static 'images/SundayMorningBrunch.jpg' %}"
+        alt="Sunday Morning Brunch"
+        class="gathering-card-image">
+
+      <p>
+        Fluffy buttermilk waffles, fresh
+        berries, and dark roast coffee
+        with neighbors.
+      </p>
+
+      <a href="{% url 'recipes' %}"
+         class="button button-outline">
+        Browse Recipes
+      </a>
+
+    </div>
+
+  {% endif %}
+
+</div>
+
+{% if mine and not gatherings %}
+  <p>You haven't hosted any gatherings yet.</p>
+{% elif search and not gatherings %}
+  <p>No gatherings matched your search.</p>
+{% endif %}
+
 {% endblock %}
