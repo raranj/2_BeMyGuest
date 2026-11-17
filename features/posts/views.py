@@ -12,7 +12,6 @@ from .models import MealGathering
 
 
 class MealGatheringForm(forms.ModelForm):
-
     date_time = forms.DateTimeField(
         widget=forms.DateTimeInput(
             attrs={"type": "datetime-local"},
@@ -68,7 +67,6 @@ class MealGatheringForm(forms.ModelForm):
 
 
 def gathering_list(request):
-
     gatherings = MealGathering.objects.filter(
         status="open",
         date_time__gt=timezone.now()
@@ -95,7 +93,6 @@ def gathering_list(request):
 
 
 def gathering_detail(request, gathering_id):
-
     gathering = get_object_or_404(
         MealGathering,
         id=gathering_id
@@ -110,7 +107,6 @@ def gathering_detail(request, gathering_id):
 
 @login_required
 def gathering_create(request):
-
     profile = User.objects.filter(
         account=request.user
     ).first()
@@ -131,7 +127,6 @@ def gathering_create(request):
         )
 
         if form.is_valid():
-
             gathering = form.save(commit=False)
 
             gathering.host = request.user
@@ -163,7 +158,6 @@ def gathering_create(request):
 
 @login_required
 def gathering_edit(request, gathering_id):
-
     gathering = get_object_or_404(
         MealGathering,
         id=gathering_id,
@@ -180,7 +174,6 @@ def gathering_edit(request, gathering_id):
         )
 
         if form.is_valid():
-
             form.save()
 
             messages.success(
@@ -211,7 +204,6 @@ def gathering_edit(request, gathering_id):
 @login_required
 @require_POST
 def gathering_cancel(request, gathering_id):
-
     gathering = get_object_or_404(
         MealGathering,
         id=gathering_id,
@@ -237,6 +229,8 @@ def gathering_cancel(request, gathering_id):
 def my_gatherings(request):
     gatherings = MealGathering.objects.filter(
         host=request.user
+    ).exclude(
+        status="cancelled"
     ).order_by("-date_time")
 
     context = {

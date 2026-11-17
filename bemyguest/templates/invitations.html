@@ -3,66 +3,274 @@
 {% block title %}Invitations - Be My Guest{% endblock %}
 
 {% block content %}
-<h2 style="margin-bottom: 1.5rem;">Invitations Dashboard</h2>
 
-<!-- Explicit 2-Column Grid Wrapper -->
-<div style="display: flex !important; flex-direction: row !important; gap: 1.5rem !important; align-items: flex-start !important; width: 100% !important;">
-
-  <!-- Left Column: Requests & Received -->
-  <div style="flex: 1 1 50% !important; min-width: 0 !important;">
-    <div class="card" style="margin-top: 0 !important; width: 100% !important;">
-      <div class="card__header">
-        <h3 style="margin: 0;">Requests & Received</h3>
-      </div>
-      <div class="card__body" style="padding: 0;">
-        <ul class="list" style="list-style: none; margin: 0; padding: 0;">
-          <li style="padding: 1rem; border-bottom: 1px solid var(--border-light);">
-            <p style="margin: 0 0 0.5rem 0;"><strong>Sarah invited you:</strong> "Come try my special pumpkin soup recipe!"</p>
-            <p class="muted" style="font-size: 0.85rem; margin-bottom: 0.75rem;">Date: Nov 14, 2026</p>
-            <div style="display: flex; gap: 0.5rem;">
-              <button class="button" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Accept</button>
-              <button class="button button-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Deny</button>
-            </div>
-          </li>
-          <li style="padding: 1rem;">
-            <p style="margin: 0 0 0.5rem 0;"><strong>Alex invited you:</strong> "Hosting a small pasta night get-together."</p>
-            <p class="muted" style="font-size: 0.85rem; margin-bottom: 0.75rem;">Date: Nov 18, 2026</p>
-            <div style="display: flex; gap: 0.5rem;">
-              <button class="button" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Accept</button>
-              <button class="button button-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Deny</button>
-            </div>
-          </li>
-        </ul>
-      </div>
+<div class="page-heading">
+    <div>
+        <h2>Invitations Dashboard</h2>
+        <p class="muted">
+            Manage your meal invitations and requests.
+        </p>
     </div>
-  </div>
+</div>
 
-  <!-- Right Column: Sent Invites -->
-  <div style="flex: 1 1 50% !important; min-width: 0 !important;">
-    <div class="card" style="margin-top: 0 !important; width: 100% !important;">
-      <div class="card__header">
-        <h3 style="margin: 0;">Sent Invites</h3>
-      </div>
-      <div class="card__body" style="padding: 0;">
-        <ul class="list" style="list-style: none; margin: 0; padding: 0;">
-          <li style="padding: 1rem; border-bottom: 1px solid var(--border-light);">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <strong>Dinner Party #1</strong>
-              <span class="badge primary">8 / 10 Accepted</span>
+<div class="invitation-grid">
+
+    <!-- LEFT: RECEIVED INVITATIONS -->
+    <section class="card">
+
+        <div class="card__header">
+            <h3 style="margin: 0;">Requests & Received</h3>
+        </div>
+
+        <div class="card__body">
+
+            <div class="invitation-item" data-id="sarah">
+
+                <h4>Sarah's Pumpkin Soup Night</h4>
+
+                <p>
+                    Sarah invited you to try her homemade
+                    pumpkin soup!
+                </p>
+
+                <p class="muted">
+                    November 20, 2026 · 6:00 PM
+                </p>
+
+                <div class="invitation-response">
+                    <button type="button"
+                            class="button"
+                            onclick="respondToInvitation('sarah', 'Accepted')">
+                        Accept
+                    </button>
+
+                    <button type="button"
+                            class="button button-outline"
+                            onclick="respondToInvitation('sarah', 'Declined')">
+                        Deny
+                    </button>
+                </div>
+
+                <p class="invitation-status" aria-live="polite"></p>
+
             </div>
-            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Lasagna Bolognese</p>
-          </li>
-          <li style="padding: 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <strong>Weekend Backyard BBQ</strong>
-              <span class="badge primary">4 / 6 Accepted</span>
+
+            <div class="invitation-item" data-id="alex">
+
+                <h4>Alex's Pasta Night</h4>
+
+                <p>
+                    Alex is hosting a cozy Italian dinner
+                    with friends.
+                </p>
+
+                <p class="muted">
+                    November 22, 2026 · 7:00 PM
+                </p>
+
+                <div class="invitation-response">
+                    <button type="button"
+                            class="button"
+                            onclick="respondToInvitation('alex', 'Accepted')">
+                        Accept
+                    </button>
+
+                    <button type="button"
+                            class="button button-outline"
+                            onclick="respondToInvitation('alex', 'Declined')">
+                        Deny
+                    </button>
+                </div>
+
+                <p class="invitation-status" aria-live="polite"></p>
+
             </div>
-            <p class="muted" style="font-size: 0.85rem; margin: 0.25rem 0 0 0;">Recipe: Honey Glazed Chicken</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
+            <div class="invitation-item" data-id="jamie">
+
+                <h4>Jamie's Taco Tuesday</h4>
+
+                <p>
+                    Homemade tacos, fresh salsa, and
+                    a fun evening with new friends.
+                </p>
+
+                <p class="muted">
+                    November 24, 2026 · 6:30 PM
+                </p>
+
+                <div class="invitation-response">
+                    <button type="button"
+                            class="button"
+                            onclick="respondToInvitation('jamie', 'Accepted')">
+                        Accept
+                    </button>
+
+                    <button type="button"
+                            class="button button-outline"
+                            onclick="respondToInvitation('jamie', 'Declined')">
+                        Deny
+                    </button>
+                </div>
+
+                <p class="invitation-status" aria-live="polite"></p>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RIGHT: SENT INVITATIONS -->
+    <section class="card">
+
+        <div class="card__header">
+            <h3 style="margin: 0;">Sent Requests & Invites</h3>
+        </div>
+
+        <div class="card__body">
+            <div id="my-join-requests"></div>
+            <div class="invitation-item">
+                <h4>Dinner Party #1</h4>
+                <p>Recipe: Lasagna Bolognese</p>
+                <span class="badge primary">
+          8 / 10 Accepted
+        </span>
+            </div>
+
+            <div class="invitation-item">
+                <h4>Weekend Backyard BBQ</h4>
+                <p>Recipe: Honey Glazed Chicken</p>
+                <span class="badge primary">
+          4 / 6 Accepted
+        </span>
+            </div>
+
+            <div class="invitation-item">
+                <h4>Sunday Brunch</h4>
+                <p>Recipe: Buttermilk Waffles</p>
+                <span class="badge secondary">
+          2 / 5 Accepted
+        </span>
+            </div>
+
+        </div>
+    </section>
 
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const STORAGE_KEY = "bemyguest_demo_invitations";
+
+    function getInvitationStatuses() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function renderInvitations() {
+        const statuses = getInvitationStatuses();
+
+        document.querySelectorAll(
+            ".invitation-item[data-id]"
+        ).forEach(function (item) {
+
+            const id = item.dataset.id;
+            const status = statuses[id];
+
+            const response = item.querySelector(
+                ".invitation-response"
+            );
+
+            const statusText = item.querySelector(
+                ".invitation-status"
+            );
+
+            if (status === "Accepted" || status === "Declined") {
+                response.style.display = "none";
+
+                statusText.textContent = "Status: " + status;
+                statusText.className =
+                    "invitation-status " +
+                    (status === "Accepted"
+                        ? "status-accepted"
+                        : "status-declined");
+            } else {
+                response.style.display = "flex";
+                statusText.textContent = "";
+                statusText.className = "invitation-status";
+            }
+        });
+    }
+
+    function respondToInvitation(id, status) {
+        const statuses = getInvitationStatuses();
+        statuses[id] = status;
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(statuses)
+        );
+
+        renderInvitations();
+    }
+
+
+    function renderJoinRequests() {
+        const container = document.getElementById("my-join-requests");
+        if (!container) return;
+
+        const storageKey =
+            "bemyguest_join_requests_{{ user.pk|escapejs }}";
+
+        let requests = [];
+
+        try {
+            const saved = JSON.parse(localStorage.getItem(storageKey));
+            requests = Array.isArray(saved) ? saved : [];
+        } catch (error) {
+            requests = [];
+        }
+
+        container.replaceChildren();
+
+        requests.forEach(function (request) {
+            const item = document.createElement("div");
+            item.className = "invitation-item";
+
+            const title = document.createElement("h4");
+            title.textContent = request.title;
+
+            const host = document.createElement("p");
+            host.textContent = "Hosted by " + request.host;
+
+            const date = document.createElement("p");
+            date.className = "muted";
+            date.textContent = request.date;
+
+            const status = document.createElement("span");
+            status.className = "badge secondary";
+            status.textContent = request.status;
+
+            const link = document.createElement("a");
+            link.href = "/posts/" + encodeURIComponent(request.id) + "/";
+            link.className = "back-link";
+            link.textContent = "View Gathering";
+            link.style.display = "block";
+            link.style.marginTop = "0.75rem";
+
+            item.append(title, host, date, status, link);
+            container.appendChild(item);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        renderInvitations();
+        renderJoinRequests();
+    });
+</script>
 {% endblock %}
